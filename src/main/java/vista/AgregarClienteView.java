@@ -1,70 +1,55 @@
 package vista;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import modelo.Cliente;
-
 public class AgregarClienteView {
     private JFrame frame;
-    private JTextField nombreField;
-    private JTextField direccionField;
-    private JTextField telefonoField;
-    private JTextField correoField;
-    private JTextField rutField;
 
     public AgregarClienteView() {
         frame = new JFrame("Agregar Cliente");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(400, 200);
 
-        JPanel panel = new JPanel(new GridLayout(5, 2));
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(5, 2, 10, 10)); // Filas, columnas, espacio horizontal, espacio vertical
 
         JLabel nombreLabel = new JLabel("Nombre:");
-        nombreField = new JTextField();
-        JLabel direccionLabel = new JLabel("Dirección:");
-        direccionField = new JTextField();
-        JLabel telefonoLabel = new JLabel("Teléfono:");
-        telefonoField = new JTextField();
-        JLabel correoLabel = new JLabel("Correo:");
-        correoField = new JTextField();
-        JLabel rutLabel = new JLabel("RUT:");
-        rutField = new JTextField();
+        JTextField nombreTextField = new JTextField(20);
 
-        JButton agregarButton = new JButton("Agregar Cliente");
+        JLabel direccionLabel = new JLabel("Dirección:");
+        JTextField direccionTextField = new JTextField(20);
+
+        JLabel telefonoLabel = new JLabel("Teléfono:");
+        JTextField telefonoTextField = new JTextField(20);
+
+        JLabel correoLabel = new JLabel("Correo:");
+        JTextField correoTextField = new JTextField(20);
+
+        JLabel rutLabel = new JLabel("RUT:");
+        JTextField rutTextField = new JTextField(20);
+
+        JButton guardarButton = new JButton("Guardar");
+        JButton cancelarButton = new JButton("Cancelar");
 
         panel.add(nombreLabel);
-        panel.add(nombreField);
+        panel.add(nombreTextField);
         panel.add(direccionLabel);
-        panel.add(direccionField);
+        panel.add(direccionTextField);
         panel.add(telefonoLabel);
-        panel.add(telefonoField);
+        panel.add(telefonoTextField);
         panel.add(correoLabel);
-        panel.add(correoField);
+        panel.add(correoTextField);
         panel.add(rutLabel);
-        panel.add(rutField);
+        panel.add(rutTextField);
 
-        agregarButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Obtener datos de los campos
-                String nombre = nombreField.getText();
-                String direccion = direccionField.getText();
-                String telefono = telefonoField.getText();
-                String correo = correoField.getText();
-                String rut = rutField.getText();
-                Cliente nuevoCliente = new Cliente(nombre, direccion, telefono, correo, rut);
-                nombreField.setText("");
-                direccionField.setText("");
-                telefonoField.setText("");
-                correoField.setText("");
-                rutField.setText("");
-            }
-        });
+        frame.add(panel, BorderLayout.CENTER);
 
-        panel.add(agregarButton);
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(guardarButton);
+        buttonPanel.add(cancelarButton);
 
-        frame.add(panel);
-        frame.setVisible(false);
+        frame.add(buttonPanel, BorderLayout.SOUTH);
+
+        frame.setVisible(true);
     }
 
     public void mostrarVentana() {

@@ -1,4 +1,5 @@
 package vista;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -38,7 +39,6 @@ public class AgregarVehiculoView {
         agregarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Aquí puedes obtener los valores ingresados en los campos de texto
                 String nombre = nombreTextField.getText();
                 int año = Integer.parseInt(añoTextField.getText());
                 double precio = Double.parseDouble(precioTextField.getText());
@@ -50,7 +50,7 @@ public class AgregarVehiculoView {
         });
 
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(7, 2));
+        panel.setLayout(new GridLayout(7, 2, 10, 10)); // Filas, columnas, espacio horizontal, espacio vertical
         panel.add(nombreLabel);
         panel.add(nombreTextField);
         panel.add(añoLabel);
